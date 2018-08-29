@@ -1,4 +1,8 @@
 /*jslint white: true, browser: true, plusplus: true, esversion: 6*/
+
+import {dec_to_hex, format_decimal, hex_to_dec, merge_and_dedupe_arrays, querySelectorParent, trimCharLeft} from './utils';
+import {contrast_from_hex, luminanace_from_dec} from './color';
+
 (function(window, document)
 {
 
@@ -9,115 +13,6 @@
     ;
 
     const
-
-        merge_and_dedupe_arrays = function(arr)
-        {
-            //https://stackoverflow.com/a/27664971/231316
-            return [...new Set([].concat(...arr))];
-        },
-
-        format_decimal = function(num, places = 2)
-        {
-            const
-                p = Math.pow(10, places)
-            ;
-            return parseFloat(Math.round(num * p) / p).toFixed(places);
-        },
-
-        luminanace_from_dec = function(r, g, b)
-        {
-            const
-                a = [r, g, b]
-                        .map(
-                            (v) => {
-                                v /= 255;
-                                if(v <= 0.03928){
-                                    return v / 12.92;
-                                }else{
-                                    return Math.pow( (v + 0.055) / 1.055, 2.4 );
-                                }
-                            }
-                        )
-            ;
-            return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-        },
-
-        contrast_from_hex = function(hex1, hex2)
-        {
-            const
-                rgb1 = hex_to_dec(hex1),
-                rgb2 = hex_to_dec(hex2),
-                l1 = luminanace_from_dec(rgb1.r, rgb1.g, rgb1.b) + 0.05,
-                l2 = luminanace_from_dec(rgb2.r, rgb2.g, rgb2.b) + 0.05,
-                la = l1 > l2 ? l1 : l2,
-                lb = l1 > l2 ? l2 : l1
-            ;
-            return la / lb;
-        },
-
-        componentToHex = function(c)
-        {
-            const
-                hex = c.toString(16)
-            ;
-
-            return hex.length == 1 ? "0" + hex : hex;
-        },
-
-        dec_to_hex = function(r, g, b)
-        {
-            return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-        },
-
-        hex_to_dec = function(hex)
-        {
-            const
-                result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-            ;
-
-            if(!result){
-                return null;
-            }
-
-            return {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            };
-        },
-
-        trimCharLeft = function(string, charToRemove)
-        {
-            if(!string || typeof string !== 'string'){
-                return '';
-            }
-
-            while(string.charAt(0)==charToRemove) {
-                string = string.substring(1);
-            }
-
-            return string;
-        },
-
-        querySelectorParent = function(el, selector, stopSelector)
-        {
-            let
-                retval = null
-            ;
-
-            while (el) {
-                if (el.matches(selector)) {
-                    retval = el;
-                    break;
-                } else if (stopSelector && el.matches(stopSelector)) {
-                    break;
-                }
-
-                el = el.parentElement;
-            }
-
-            return retval;
-        },
 
         draw_grid = function(tbody)
         {
