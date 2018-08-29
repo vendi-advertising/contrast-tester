@@ -1,0 +1,126 @@
+:root
+{
+    --color-button-delete: #f00;
+    --color-button-add: #0f0;
+    --font-size-default: 1.6rem;
+}
+
+html
+{
+    font-size: 62.5%; /* 1rem = 10px; */
+    font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body
+{
+    font-size: var(--font-size-default);
+}
+
+.instructions
+{
+
+}
+
+.color-input-table thead td
+{
+    font-size: calc( var(--font-size-default) * 1.5 );
+}
+
+.color-input-table label
+{
+    font-size: var(--font-size-default);
+}
+
+.color-input-table input[type=text],
+.color-input-table input[type=number]
+{
+    height: var(--font-size-default);
+}
+
+.color-row-buttons
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.color-row-buttons li
+{
+    display: inline-block;
+}
+
+.color-row-buttons button
+{
+    border: 0.2rem solid #fff;
+    cursor: pointer;
+    margin: 0;
+    padding: 0.3rem;
+}
+
+.color-row-buttons [data-action=delete]
+{
+    background-color: var(--color-button-delete);
+    color: #fff;
+}
+
+.color-row-buttons [data-action=delete]:hover
+{
+    background-color: #fff;
+    border-color: var(--color-button-delete);
+    color: var(--color-button-delete);
+}
+
+.color-row-buttons [data-action=add]
+{
+    background-color: var(--color-button-add);
+    color: #fff;
+}
+
+.color-row-buttons [data-action=add]:hover
+{
+    background-color: #fff;
+    border-color: var(--color-button-add);
+    color: var(--color-button-add);
+}
+
+
+table[data-role=color-contrast-grid] td
+{
+    font-size: calc( var(--font-size-default) * 1.2 );
+    height: 2rem;
+    width: 10rem;
+}
+
+
+table[data-role=color-contrast-grid] .aa-pass
+{
+    background-color: #80ff80;
+}
+
+table[data-role=color-contrast-grid] .aa-warn
+{
+    background-color: #ffff80;
+}
+
+table[data-role=color-contrast-grid] .aa-fail
+{
+    background-color: #ff8080;
+}
+
+.sub-table,
+.sub-table tr,
+.sub-table td
+{
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+@media print
+{
+    .color-input-table
+    {
+        display: none;
+    }
+}
