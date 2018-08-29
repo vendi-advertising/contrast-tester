@@ -16,11 +16,6 @@ body
     font-size: var(--font-size-default);
 }
 
-.instructions
-{
-
-}
-
 .color-input-table thead td
 {
     font-size: calc( var(--font-size-default) * 1.5 );
