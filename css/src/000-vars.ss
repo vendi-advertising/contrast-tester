@@ -1,0 +1,6 @@
+:root
+{
+    --color-button-delete: #f00;
+    --color-button-add: #0f0;
+    --font-size-default: 1.6rem;
+}

@@ -1,0 +1,45 @@
+.color-row-buttons
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.color-row-buttons li
+{
+    display: inline-block;
+}
+
+.color-row-buttons button
+{
+    border: 0.2rem solid #fff;
+    cursor: pointer;
+    margin: 0;
+    padding: 0.3rem;
+}
+
+.color-row-buttons [data-action=delete]
+{
+    background-color: var(--color-button-delete);
+    color: #fff;
+}
+
+.color-row-buttons [data-action=delete]:hover
+{
+    background-color: #fff;
+    border-color: var(--color-button-delete);
+    color: var(--color-button-delete);
+}
+
+.color-row-buttons [data-action=add]
+{
+    background-color: var(--color-button-add);
+    color: #fff;
+}
+
+.color-row-buttons [data-action=add]:hover
+{
+    background-color: #fff;
+    border-color: var(--color-button-add);
+    color: var(--color-button-add);
+}

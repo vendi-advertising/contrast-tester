@@ -1,0 +1,8 @@
+.sub-table,
+.sub-table tr,
+.sub-table td
+{
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+}
