@@ -12,19 +12,19 @@
   },
   "author": "",
   "license": "ISC",
-    "dependencies": {
-        "normalize.css": "^8.0.1",
-        "postcss-custom-properties": "^8.0.10"
-    },
-    "devDependencies": {
-        "@symfony/webpack-encore": "^0.27.0",
-        "autoprefixer": "^9.6.0",
-        "babel-eslint": "^8.2.1",
-        "postcss-loader": "^3.0.0"
-    },
-    "browserslist": [
-      "Last 2 version",
-      "> 2%",
-      "ie 11"
-    ]
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "postcss-custom-properties": "^8.0.10"
+  },
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.27.0",
+    "autoprefixer": "^9.6.0",
+    "babel-eslint": "^8.2.1",
+    "postcss-loader": "^3.0.0"
+  },
+  "browserslist": [
+    "Last 2 version",
+    "> 2%",
+    "ie 11"
+  ]
 }
