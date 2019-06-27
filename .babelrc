@@ -1,4 +1,0 @@
-{
-  "presets": ["@babel/preset-env"], // or @babel/env
-  "plugins": ["@babel/transform-proto-to-assign"]
-}

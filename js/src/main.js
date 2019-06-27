@@ -3,6 +3,12 @@
 import {dec_to_hex, format_decimal, hex_to_dec, merge_and_dedupe_arrays, querySelectorParent, trimCharLeft} from './utils';
 import {contrast_from_hex, luminanace_from_dec} from './color';
 
+import '../../css/src/style.css';
+import '../../css/src/000-vars.css';
+import '../../css/src/100-main.css';
+import '../../css/src/400-color-row-buttons.css';
+import '../../css/src/999-sub-table.css';
+
 (function(window, document)
 {
 
