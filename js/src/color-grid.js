@@ -3,24 +3,36 @@
 import {format_decimal, merge_and_dedupe_arrays} from './utils';
 import {contrast_from_hex} from './color';
 
-import '../../css/src/000-vars.css';
-import '../../css/src/100-main.css';
-import '../../css/src/400-color-row-buttons.css';
-import '../../css/src/500-grid.css';
-
 (function(window, document)
 {
 
     'use strict';
 
-    let
-        color_idx = 0
-    ;
-
     const
 
         are_two_colors_too_close_to_tell = function (color1, color2) {
             return contrast_from_hex(color1, color2) < 1.1;
+        },
+
+        get_unqiue_colors = function (tbody) {
+            const
+                colors = tbody.querySelectorAll('input[type=color]'),
+
+                //Convert to array and grab hex codes only
+                actual_colors_base = [...colors]
+                    .map(
+                        (c) => {
+                            return c.value.toLowerCase();
+                        }
+                    ),
+
+                always_colors = [
+                    '#ffffff',
+                    '#000000',
+                ]
+            ;
+
+            return merge_and_dedupe_arrays([actual_colors_base, always_colors]);
         },
 
         draw_grid = function(event_details)
@@ -41,24 +53,9 @@ import '../../css/src/500-grid.css';
             grid.setAttribute('data-role', 'color-contrast-grid');
 
             const
-                colors = tbody.querySelectorAll('input[type=color]'),
+                actual_colors = get_unqiue_colors(tbody),
 
-                //Convert to array and grab hex codes only
-                actual_colors_base = [...colors]
-                    .map(
-                        (c) => {
-                            return c.value.toLowerCase();
-                        }
-                ),
-
-                always_colors = [
-                    '#ffffff',
-                    '#000000',
-                ],
-
-                actual_colors = merge_and_dedupe_arrays( [ actual_colors_base, always_colors ] ),
-
-                color_top_row = document.createElement('div')
+                color_top_row = create_single_row()
             ;
 
             color_top_row.classList.add('top-row');
@@ -77,6 +74,8 @@ import '../../css/src/500-grid.css';
                 )
             ;
 
+            grid.classList.add('c' + actual_colors.length);
+
             grid.appendChild(color_top_row);
 
             actual_colors
@@ -84,12 +83,12 @@ import '../../css/src/500-grid.css';
                     (color1) => {
                         const
                             row = create_single_row(),
-                            td_for_color = create_single_cell_with_text(),
+                            // td_for_color = create_single_cell_with_text(),
                             td_for_text = create_single_cell_with_text(color1.toUpperCase())
                         ;
 
-                        td_for_color.style.backgroundColor = color1;
-                        row.appendChild(td_for_color);
+                        // td_for_color.style.backgroundColor = color1;
+                        // row.appendChild(td_for_color);
                         row.appendChild(td_for_text);
 
                         actual_colors
@@ -152,6 +151,8 @@ import '../../css/src/500-grid.css';
             const
                 cell = document.createElement('div')
             ;
+
+            cell.classList.add('cell');
 
             cell.appendChild(document.createTextNode(text || ''));
 

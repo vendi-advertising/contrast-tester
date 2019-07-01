@@ -1,4 +1,53 @@
-table[data-role=color-contrast-grid] td
+[data-role=color-contrast-grid] .row {
+    display: grid;
+}
+
+[data-role=color-contrast-grid].c2 .row {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+[data-role=color-contrast-grid].c3 .row {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+[data-role=color-contrast-grid].c4 .row {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+[data-role=color-contrast-grid].c5 .row {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+[data-role=color-contrast-grid].c6 .row {
+    grid-template-columns: repeat(7, 1fr);
+}
+
+[data-role=color-contrast-grid].c7 .row {
+    grid-template-columns: repeat(8, 1fr);
+}
+
+[data-role=color-contrast-grid].c8 .row {
+    grid-template-columns: repeat(9, 1fr);
+}
+
+[data-role=color-contrast-grid].c9 .row {
+    grid-template-columns: repeat(10, 1fr);
+}
+
+[data-role=color-contrast-grid].c10 .row {
+    grid-template-columns: repeat(11, 1fr);
+}
+
+[data-role=color-contrast-grid].c11 .row {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+[data-role=color-contrast-grid].c12 .row {
+    grid-template-columns: repeat(13, 1fr);
+}
+
+
+[data-role=color-contrast-grid] .cell
 {
     font-size: calc( var(--font-size-default) * 1.2 );
     height: 2rem;
@@ -6,17 +55,17 @@ table[data-role=color-contrast-grid] td
     width: 10rem;
 }
 
-table[data-role=color-contrast-grid] .aa-pass
+[data-role=color-contrast-grid] .aa-pass
 {
     background-color: #80ff80;
 }
 
-table[data-role=color-contrast-grid] .aa-warn
+[data-role=color-contrast-grid] .aa-warn
 {
     background-color: #ffff80;
 }
 
-table[data-role=color-contrast-grid] .aa-fail
+[data-role=color-contrast-grid] .aa-fail
 {
     background-color: #ff8080;
 }
