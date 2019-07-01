@@ -1,7 +1,7 @@
 /*jslint white: true, browser: true, plusplus: true, esversion: 6*/
 
 import './color-settings';
-import './main';
+import './color-grid';
 
 import '../../css/src/000-vars.css';
 import '../../css/src/100-main.css';
