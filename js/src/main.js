@@ -3,11 +3,10 @@
 import {dec_to_hex, format_decimal, hex_to_dec, merge_and_dedupe_arrays, querySelectorParent, trimCharLeft} from './utils';
 import {contrast_from_hex, luminanace_from_dec} from './color';
 
-import '../../css/src/style.css';
 import '../../css/src/000-vars.css';
 import '../../css/src/100-main.css';
 import '../../css/src/400-color-row-buttons.css';
-import '../../css/src/999-sub-table.css';
+import '../../css/src/500-grid.css';
 
 (function(window, document)
 {
@@ -19,6 +18,10 @@ import '../../css/src/999-sub-table.css';
     ;
 
     const
+
+        are_two_colors_too_close_to_tell = function (color1, color2) {
+            return contrast_from_hex(color1, color2) < 1.1;
+        },
 
         draw_grid = function(tbody)
         {
@@ -51,33 +54,33 @@ import '../../css/src/999-sub-table.css';
 
                 actual_colors = merge_and_dedupe_arrays( [ actual_colors_base, always_colors ] ),
 
-                color_top_row = document.createElement('tr'),
-                color_name_row = document.createElement('tr')
+                color_top_row = document.createElement('tr')
+                // color_name_row = document.createElement('tr')
             ;
 
             //Two empty cells
             color_top_row.appendChild(create_simple_td_with_text());
             color_top_row.appendChild(create_simple_td_with_text());
-            color_name_row.appendChild(create_simple_td_with_text());
-            color_name_row.appendChild(create_simple_td_with_text());
+            // color_name_row.appendChild(create_simple_td_with_text());
+            // color_name_row.appendChild(create_simple_td_with_text());
 
             actual_colors
                 .forEach(
                     (color) => {
                         const
-                            td_for_color = create_simple_td_with_text(),
-                            td_for_text = create_simple_td_with_text(color.toUpperCase())
+                            td_for_color = create_simple_td_with_text(color.toUpperCase())
+                            // td_for_text = create_simple_td_with_text(color.toUpperCase())
                         ;
 
-                        td_for_color.style.backgroundColor = color;
+                        // td_for_color.style.backgroundColor = color;
                         color_top_row.appendChild(td_for_color);
-                        color_name_row.appendChild(td_for_text);
+                        // color_name_row.appendChild(td_for_text);
                     }
                 )
             ;
 
             grid.appendChild(color_top_row);
-            grid.appendChild(color_name_row);
+            // grid.appendChild(color_name_row);
 
             actual_colors
                 .forEach(
@@ -96,29 +99,15 @@ import '../../css/src/999-sub-table.css';
                             .forEach(
                                 (color2) => {
                                     const
-                                        // sub_table = document.createElement('table'),
 
                                         outer_td = create_simple_td_with_text(),
-
                                         value = format_decimal(contrast_from_hex(color1, color2)),
-
-                                        // tr_a = document.createElement('tr'),
-                                        // td_a = create_simple_td_with_text('Sample'),
-
-                                        // tr_b = document.createElement('tr'),
-                                        // td_b = create_simple_td_with_text('Sample'),
-
-                                        // tr_c = document.createElement('tr'),
-                                        td_c = create_simple_td_with_text(value)
+                                        td_c = create_simple_td_with_text('Text')
                                     ;
 
-                                    // sub_table.classList.add('sub-table')
-
-                                    // td_a.style.backgroundColor = color1;
-                                    // td_b.style.backgroundColor = color2;
-
-                                    // td_a.style.color = color2;
-                                    // td_b.style.color = color1;
+                                    if (value >= 4.5) {
+                                        // td_c.innerHTML =
+                                    }
 
                                     if(value >= 4.5){
                                         td_c.classList.add('aa-pass');
@@ -135,15 +124,6 @@ import '../../css/src/999-sub-table.css';
                                     }else{
                                         td_c.classList.add('aaa-fail');
                                     }
-
-                                    // tr_a.appendChild(td_a);
-                                    // tr_b.appendChild(td_b);
-                                    // tr_c.appendChild(td_c);
-                                    // sub_table.appendChild(tr_a);
-                                    // sub_table.appendChild(tr_b);
-                                    // sub_table.appendChild(tr_c);
-
-                                    // outer_td.appendChild(sub_table);
 
                                     outer_td.appendChild(td_c);
 
