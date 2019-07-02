@@ -2,6 +2,7 @@
 
 import {dec_to_hex, hex_to_dec, querySelectorParent, trimCharLeft} from './utils';
 import {triggerEvent} from  './event-handler';
+import Picker from 'vanilla-picker';
 
 import '../../css/src/000-vars.css';
 import '../../css/src/100-main.css';
@@ -225,8 +226,17 @@ import '../../css/src/500-grid.css';
 
             clr.setAttribute('name', 'color-idx-' + row_idx);
             clr.setAttribute('id',   'color-idx-' + row_idx);
-            clr.setAttribute('type', 'color');
+            // clr.setAttribute('type', 'color');
             clr.setAttribute('data-type', 'color-as-color');
+            clr.addEventListener('click', () => {
+                var picker = new Picker({
+                    parent: cell, alpha: false,
+});
+                picker.onChange = (color) => {
+                    clr.value = color.printHex();
+                }
+                picker.show();
+            })
             clr.addEventListener('change', ()=>{handle_color_change(clr);});
             cell.appendChild(clr);
 

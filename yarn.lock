@@ -710,6 +710,11 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@sphinxxxx/color-conversion@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@sphinxxxx/color-conversion/-/color-conversion-2.2.1.tgz#88e94a50fa79f48bb0d1490bb716df8d506941dd"
+  integrity sha512-5+ofCE09lF6C7DPSVyvQ2Nf0oaue3Cl+SosT45DYy5nhgUXsOq3TetArC1q8mVfAOjhG0WReQPPFBdc4xXVNkg==
+
 "@symfony/webpack-encore@^0.27.0":
   version "0.27.0"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-0.27.0.tgz#efc960967823b5ff93881222f16496f1fa709f24"
@@ -6054,6 +6059,13 @@ v8-compile-cache@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
   integrity sha512-CNmdbwQMBjwr9Gsmohvm0pbL954tJrNzf6gWL3K+QMQf00PF7ERGrEiLgjuU3mKreLC2MeGhUsNV9ybTbLgd3w==
+
+vanilla-picker@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/vanilla-picker/-/vanilla-picker-2.9.0.tgz#20598b602253d894d8ab7789835fb8babe9608d8"
+  integrity sha512-L9dPXeXrfpT3qDqoaeMj0g7twSOz1NFmsmxEm8GwnbIQzPsOcc0n3zty/Iqgr69h3qDxuZEvv3UxXS6nKgLiOQ==
+  dependencies:
+    "@sphinxxxx/color-conversion" "^2.2.1"
 
 vary@~1.1.2:
   version "1.1.2"

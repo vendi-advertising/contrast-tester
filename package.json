@@ -14,7 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "normalize.css": "^8.0.1",
-    "postcss-custom-properties": "^8.0.10"
+    "postcss-custom-properties": "^8.0.10",
+    "vanilla-picker": "^2.9.0"
   },
   "devDependencies": {
     "@symfony/webpack-encore": "^0.27.0",
