@@ -1,23 +1,81 @@
-.color-input-table thead td
-{
-    font-size: calc( var(--font-size-default) * 1.5 );
+:root {
+    --width-color-input-table-single-color-block: 10rem;
+    --height-input: 3rem;
 }
 
-.color-input-table label
-{
-    font-size: var(--font-size-default);
+
+.color-input-table {
+    display: grid;
+    grid-column-gap: 1rem;
 }
 
-.color-input-table input[type=text],
-.color-input-table input[type=number]
-{
-    height: var(--font-size-default);
+.color-input-table .single-color-block {
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-template-rows: 10rem var( --height-input ) var( --height-input );
 }
 
-@media print
-{
-    .color-input-table
-    {
-        display: none;
-    }
+.color-input-table .single-color-block > * {
+    border: 0.1rem solid 
+}
+
+.color-input-table label {
+    left: -999em;
+    position: absolute;
+}
+
+.color-input-table input[type=text] {
+    border: none;
+    box-sizing: border-box;
+    height: var( --height-input );
+    max-height: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    width: var( --width-color-input-table-single-color-block );
+}
+
+/* 
+.color-input-table .single-color-block .swatch-holder {
+    height: 10rem;
+    width: 100%;
+} */
+
+.color-input-table[data-color-count="1"] {
+    grid-template-columns: repeat( 1, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="2"] {
+    grid-template-columns: repeat( 2, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="3"] {
+    grid-template-columns: repeat( 3, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="4"] {
+    grid-template-columns: repeat( 4, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="5"] {
+    grid-template-columns: repeat( 5, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="6"] {
+    grid-template-columns: repeat( 6, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="7"] {
+    grid-template-columns: repeat( 7, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="8"] {
+    grid-template-columns: repeat( 8, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="9"] {
+    grid-template-columns: repeat( 9, var( --width-color-input-table-single-color-block ));
+}
+
+.color-input-table[data-color-count="10"] {
+    grid-template-columns: repeat( 10, var( --width-color-input-table-single-color-block ));
 }

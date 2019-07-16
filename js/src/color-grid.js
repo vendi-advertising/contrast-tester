@@ -153,9 +153,7 @@ import {contrast_from_hex} from './color';
             ;
 
             cell.classList.add('cell');
-
             cell.appendChild(document.createTextNode(text || ''));
-
             return cell;
         },
 

@@ -1,11 +1,12 @@
 /*jslint white: true, browser: true, plusplus: true, esversion: 6*/
 
-import {dec_to_hex, hex_to_dec, querySelectorParent, trimCharLeft} from './utils';
+import {dec_to_hex, hex_to_dec, querySelectorParent, trimCharLeft, create_dom_element_with_class} from './utils';
 import {triggerEvent} from  './event-handler';
 import Picker from 'vanilla-picker';
 
 import '../../css/src/000-vars.css';
 import '../../css/src/100-main.css';
+import '../../css/src/300-color-input-table.css';
 import '../../css/src/400-color-row-buttons.css';
 import '../../css/src/500-grid.css';
 
@@ -15,10 +16,26 @@ import '../../css/src/500-grid.css';
     'use strict';
 
     let
-        color_idx = 0
+        color_idx = 0,
+        idx_for_single_color_ids = 0
     ;
 
     const
+
+        default_colors = [
+            {
+                name: 'Black',
+                color_hex: '000000'
+            },
+            {
+                name: 'White',
+                color_hex: 'ffffff'
+            }
+        ],
+
+        user_colors = [
+
+        ],
 
         handle_add = function(button)
         {
@@ -336,36 +353,54 @@ import '../../css/src/500-grid.css';
             return td;
         },
 
-        create_color_maker_header = function()
-        {
+        create_single_label_block = (color_info) => {
             const
-                thead = document.createElement('thead'),
-                tr = document.createElement('tr')
+                block = create_dom_element_with_class('div', 'swatch-holder'),
+                input = document.createElement('input'),
+                label = document.createElement('label'),
+                idx = ++idx_for_single_color_ids,
+                id = `color-label-${idx}`
             ;
 
-            tr.appendChild(create_simple_td_with_text());
-            tr.appendChild(create_simple_td_with_text());
-            tr.appendChild(create_simple_td_with_text('Hex'));
-            tr.appendChild(create_simple_td_with_text('Decimal'));
-            tr.appendChild(create_simple_td_with_text());
+            input.type = 'text';
+            input.id = id;
+            input.value = color_info.name;
 
-            thead.appendChild(tr);
+            label.setAttribute('for', id);
+            label.appendChild(document.createTextNode('Color descriptive name'));
 
-            return thead;
+            block.appendChild(input);
+            block.appendChild(label);
+
+            return block;
+        },
+
+        create_color_block = function(color_info)
+        {
+            const
+                single_color_block = create_dom_element_with_class('div', 'single-color-block'),
+                swatch = create_dom_element_with_class('div', 'swatch-holder'),
+                label = create_single_label_block(color_info),
+                color = create_dom_element_with_class('div', 'color-holder')
+            ;
+
+            single_color_block.classList.add('single-color-block');
+            single_color_block.appendChild(swatch);
+            single_color_block.appendChild(label);
+            single_color_block.appendChild(color);
+
+            return single_color_block;
         },
 
         create_color_maker = function()
         {
             const
-                cont = document.createElement('table'),
-                body = document.createElement('tbody'),
-                first_row = create_color_row()
+                cont = create_dom_element_with_class('div', 'color-input-table')
             ;
-
-            cont.classList.add('color-input-table');
-            cont.appendChild(create_color_maker_header());
-            body.appendChild(first_row);
-            cont.appendChild(body);
+            default_colors
+                .forEach( color_info => cont.appendChild(create_color_block(color_info)) )
+            ;
+            cont.setAttribute('data-color-count', default_colors.length);
             return cont;
         },
 
